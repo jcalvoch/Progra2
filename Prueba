@@ -1,0 +1,61 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Prueba
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            String x = "S";
+            int f, c, a, b;
+            DateTime tiempo = new DateTime(2015,9,25);
+            int hora = tiempo.ToLocalTime().Hour;
+            string saludo = "Buenas "  + ((hora > 15) ? "noches" : "tardes");
+            Console.WriteLine(saludo);
+            while (x == "S")
+            {
+                Console.WriteLine("Defina el tamano de las filas y Array2: ");
+                f = int.Parse(Console.ReadLine());
+                Console.WriteLine("Define el tamano de las columnas: ");
+                c = int.Parse(Console.ReadLine());
+                a = 0;
+                b = 0;
+                int[,] array = new int[f, c];
+                string[] array2 = new string[f];
+                for (int i = 0; i < f; i++)
+                {
+                    for (int j = 0; j < c; j++)
+                    {
+                        array[i, j] = a;
+                        Console.Write("{0} ", array[i, j]);
+                        a++;
+                    }
+                    Console.Write(Environment.NewLine + Environment.NewLine);
+                    array2[i] = b.ToString();
+                    b++;
+                }
+                Console.Write(Environment.NewLine + Environment.NewLine);
+                Console.Write("Imprimiendo array: ");
+                foreach (string index in array2)
+                {
+                    Console.Write("{0} ", index);
+                }
+                Console.Write(Environment.NewLine + Environment.NewLine);
+                Console.Write("Desea continuar? S/N \n");
+                x = Console.ReadLine();
+                switch (x)
+                {
+                    case "S":
+                        break;
+                    case "N":
+                        Console.Write("Saliendo de la aplicacion, gracias \n");
+                        break;
+                }
+            }
+        }
+    }
+}
