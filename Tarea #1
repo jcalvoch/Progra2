@@ -1,0 +1,127 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace TareaUno
+{ 
+    class TareaUno
+    {
+        public void potencia(Int32 n)
+        {
+            Int16 i = 1;
+            Console.WriteLine(Environment.NewLine);
+            Console.WriteLine("Tabla de Potencias");
+            Console.WriteLine("N   Cuadrado    Cubo    Cuarta");
+            do
+            {
+                Console.WriteLine("{0}\t" + "{1} \t" + " {2} \t"  + " {3} \t", i, Math.Pow(i,2), Math.Pow(i,3), Math.Pow(i,4));
+                i++;
+
+            } while (i <= n);
+            
+        }
+
+        public void multiplicar(Int32 n)
+        {
+            Int16 i = 1;
+            Console.WriteLine(Environment.NewLine);
+            Console.WriteLine("Tabla de Multiplicar");
+            while (i <= 12)
+            {
+                Console.WriteLine("   {0} X {1} = {2}", i, n, n * i);
+                i++;
+            }
+        }
+
+        public void piramide(Int32 n)
+        { 
+            string[] p = new string[n];
+            Console.WriteLine(Environment.NewLine);
+            Console.WriteLine("La Pirámide");
+
+            for (Int16 i = 0; i < n; i++)
+            {
+                p[i] = " ";
+            }
+
+            for (Int32 i = n-1 ; i >= 0; i--)
+                {
+                p[i] = "X";
+                Console.WriteLine(" {0}", string.Join("", p)); 
+                }
+            Console.WriteLine(Environment.NewLine);
+        }
+
+        public void estaciones(String mes)
+        {
+            switch (mes)
+            {
+                case "Diciembre": case "Enero": case "Febrero":
+                    Console.WriteLine("En el mes {0} se está en Verano", mes);
+                    break;
+                case "Marzo": case "Abril": case "Mayo":
+                    Console.WriteLine("En el mes {0} se está en Otoño", mes);
+                    break;
+                case "Junio": case "Julio": case "Agosto":
+                    Console.WriteLine("En el mes {0} se está en Invierno", mes);
+                    break;
+                case "Septiembre": case "Octubre": case "Noviembre":
+                    Console.WriteLine("En el mes {0} se está en Primavera", mes);
+                    break;
+                default:
+                    Console.WriteLine("Escriba un nombre de mes correcto");
+                    break;
+
+            }
+            Console.WriteLine(Environment.NewLine);
+        }
+
+        public void elDescuento(Int64 monto, Int16 edad)
+        {
+            if (edad < 25)
+            {
+                Console.WriteLine("El monto total va a ser de ¢{0}", (monto + (monto * .20)));
+            }
+            if (edad >= 25 && edad < 35)
+            {
+                Console.WriteLine("El monto total va a ser de ¢{0}", (monto + (monto * .20)) - (monto * .07));
+            }
+            else if (edad >= 35)
+            {
+                Console.WriteLine("El monto total va a ser de ¢{0}", (monto + (monto * .20)) - (monto * .09));
+            }
+            Console.WriteLine(Environment.NewLine);
+        }
+
+        public void listaSolteros(String estado)
+        {
+            String lista = (estado == "S") ? "\nAudi ZZA $18000\nPeugeot Fiera $20000\nAudi 3Z $25000" : "\nNissan BBT $12000\nHyundai WXT $14000\nDaewoo TICO LOCO $8000";
+            Console.WriteLine("La lista de vehiculos para usted es esta: {0}", lista);
+            Console.WriteLine(Environment.NewLine);
+            }
+        
+
+        static void Main(string[] args)
+        {
+            Console.Write("Escriba un numero: ");
+            Int32 n = Int32.Parse(Console.ReadLine());
+            Console.Write("Escriba el nombre de un mes, por ejemplo: Diciembre: ");
+            String mes = Console.ReadLine();
+            Console.Write("Escriba el monto del equipo: ");
+            Int64 monto = Int64.Parse(Console.ReadLine());
+            Console.Write("Escriba la edad del comprador: ");
+            Int16 edad = Int16.Parse(Console.ReadLine());
+            Console.Write("Digite 'S' si usted es soltero y 'C' si es casado: ");
+            String estado = Console.ReadLine();
+            TareaUno calcular = new TareaUno();
+            calcular.potencia(n);
+            calcular.multiplicar(n);
+            calcular.piramide(n);
+            calcular.estaciones(mes);
+            calcular.elDescuento(monto, edad);
+            calcular.listaSolteros(estado);
+        }
+    }
+}
