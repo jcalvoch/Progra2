@@ -1,0 +1,112 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Clase_3
+{
+    class Animal
+    {
+        //Declaración de los Atributos de clase
+
+        /* atributo           tipo
+         * numeroDePatas      Int16
+         * reinoAnimal        string
+         * sexo               char
+         * altura             Double
+         * peso               Double
+         * especie            string
+         */
+        private Int16 numeroDePatas;
+        private string reinoAnimal;
+        private char sexo;
+        private Double altura;
+        private Double peso;
+        private string especie;
+
+        public Animal() 
+        { 
+        }
+
+        public Animal(Int16 numeroDePatas, string reinoAnimal, double altura, char sexo, double peso, string especie)
+        {
+            this.numeroDePatas = numeroDePatas;
+            this.reinoAnimal = reinoAnimal;
+            this.sexo = sexo;
+            this.altura = altura;
+            this.peso = peso;
+            this.especie = especie;
+        }
+
+        public Int16 NumeroDePatas {
+            get
+            {
+                return numeroDePatas;
+            }
+            set 
+            {
+                numeroDePatas = value;
+            }
+        }
+
+        public string Reino
+        {
+            get
+            {
+                return reinoAnimal;
+            }
+            set
+            {
+                reinoAnimal = value;
+            }
+        }
+
+        public char Sexo
+        {
+            get
+            {
+                return sexo;
+            }
+            set
+            {
+                sexo = value;
+            }
+        }
+
+        public double Peso
+        {
+            get
+            {
+                return peso;
+            }
+            set
+            {
+                peso = value;
+            }
+        }
+
+        public string Especie
+        {
+            get
+            {
+                return especie;
+            }
+            set 
+            {
+                especie = value;
+            }
+        }
+
+        public override String ToString() 
+        {
+            string salida = "";
+            salida = "Reino Animal:" + this.reinoAnimal + "\n";
+            salida += "Especie:" + this.especie + "\n";
+            salida += "Sexo:" + this.sexo + "\n";
+            salida += "Peso:" + this.peso + "\n";
+            salida += "Número de Patas:" + this.numeroDePatas + "\n";
+            return salida;
+        }
+    }
+}
