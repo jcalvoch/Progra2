@@ -1,5 +1,4 @@
 using System;
-using System.Threading;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,85 +6,141 @@ using System.Threading.Tasks;
 
 namespace TareaDos
 {
-    class Password
+    class Persona
     {
-        private Int16 longitud = 8;
-        private string contraseña;
+        private string nombre;
+        private Int16 edad;
+        private long cedula;
+        private char genero = 'H';
+        private double peso;
+        private double altura;
 
-        public Password() //Constructor por defecto
+        public Persona() // Constructor por defecto
         { }
 
-
-
-        public Password(Int16 longitud)  //Llamado de longitud por parámetro
-        {
-            this.longitud = longitud;
+        public Persona(string nombre, Int16 edad, long cedula, char genero, double peso, double altura)
+        { // Constructor con todos los atributos como parámetros
+            this.nombre = nombre;
+            this.edad = edad;
+            this.cedula = cedula;
+            this.genero = genero;
+            this.peso = peso;
+            this.altura = altura;  
         }
 
-        public string Contraseña
+        public string Nombre
         {
             get
             {
-                return contraseña;
+                return nombre;
             }
-        }
-
-        public Int16 Longitud
-        {
-            get
-            {
-                return longitud;
-            }
-
             set
             {
-                longitud = value;
+                nombre = value;
             }
         }
 
-
-        public String generarPassword(Int16 Longitud)
+        public Int16 Edad
         {
-           
-            const string valores = "1234567890ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz"; //Caracteres válidos en la contraseña
-            Random random = new Random();
-            int i = 0;
-            contraseña = "";
-            while (i < Longitud)
+            get
             {
-                contraseña += valores[random.Next(valores.Length)];
-                i++;
+                return edad;
             }
-            return contraseña;
-            
+            set
+            {
+                edad = value;
+            }
         }
 
-        public Boolean esFuerte(String contraseña)
+        public char Genero
         {
-            Int16 mayus = 0;
-            Int16 minus = 0;
-            Int16 num = 0;
-            for (int i = 0; i < contraseña.Length; i++)
+            get
             {
-                if (contraseña.Substring(i, 1).ToUpper() == contraseña.Substring(i, 1))
-                {
-                    mayus++;
-                }
-
-                if (contraseña.Substring(i, 1).ToLower() == contraseña.Substring(i, 1))
-                {
-                    minus++;
-                }
-
-                else
-                {
-                    num++;
-                }
+                return genero;
             }
-            Boolean resultado = (mayus >= 2 && minus >= 1 && num >= 5) ? true : false;
-
-            return resultado;
+            set
+            {
+                genero = value;
+            }
         }
+
+        public double Peso
+        {
+            get
+            {
+                return peso;
+            }
+            set
+            {
+                peso = value;
+            }
+        }
+
+        public double Altura
+        {
+            get
+            {
+                return altura;
+            }
+            set
+            {
+                altura = value;
+            }
+        }
+
+        public Int16 calcularMC()
+        {
+            double imc = 0;
+            imc = peso / Math.Pow(altura, 2);
+            if (imc < 18.50)
+            {
+                return -1;
+            }
+            else if (imc >= 18.50 && imc < 25)
+            {
+                return 0;
+            }
+            else
+            {
+                return 1;
+            }
+        }
+
+        public Boolean esMayorDeEdad()
+        {
+            if (edad > 18)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public override String ToString()
+        {
+            string salida = "";
+            salida = "Nombre: " + this.nombre + "\n";
+            salida += "Edad: " + this.edad + "\n";
+            salida += "Cédula: " + this.cedula + "\n";
+            salida += "Género: " + this.genero + "\n";
+            salida += "Peso: " + this.peso + " kgs" + "\n";
+            salida += "Altura: " + this.altura + " mts" + "\n";
+            return salida;
+        }
+
+        Random randomP = new Random();
+        public void generaCedula()
+        {
+            this.cedula = GenerateRandomNumber();
+        }
+
+        private long GenerateRandomNumber()
+        {
+            return this.randomP.Next(10000000, 99999999);
+        }
+
 
     }
 }
