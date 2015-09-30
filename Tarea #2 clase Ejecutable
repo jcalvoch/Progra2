@@ -53,7 +53,7 @@ namespace TareaDos
             Console.WriteLine("El resultado del cálculo del IMC es igual a: {0}", persona2.calcularMC() + "\nDonde '-1' significa que está por debajo de su peso ideal, " +
                "'0' significa que está en su peso ideal y '1' significa que está sobre peso");
             String m3 = (persona3.esMayorDeEdad().Equals(true)) ? "mayor de edad" : "menor de edad";
-            Console.WriteLine("La persona 2 es {0}", m3);
+            Console.WriteLine("La persona 3 es {0}", m3);
             Console.WriteLine(persona3.ToString().ToString());
         }
 
