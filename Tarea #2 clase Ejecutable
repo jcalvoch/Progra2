@@ -1,0 +1,108 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace TareaDos
+{
+    class Program
+    {
+
+        static void ejecutablePersona()
+        {
+            Persona persona1 = new Persona();
+            Persona persona2 = new Persona();
+            Persona persona3 = new Persona();
+            //Datos para la persona 1
+            Console.WriteLine("Digite los siguientes valores para la primera persona:\nNombre, Edad, Género('H' o 'M'), Peso (en kgs) y Altura (en mts)\n");
+            persona1.Nombre = Console.ReadLine();
+            persona1.Edad = Int16.Parse(Console.ReadLine());
+            persona1.Genero = Convert.ToChar(Console.ReadLine());
+            persona1.Peso = Double.Parse(Console.ReadLine());
+            persona1.Altura = Double.Parse(Console.ReadLine());
+            persona1.generaCedula();
+
+            //Datos para la persona 2
+            Console.WriteLine("Digite los siguientes valores para la segunda persona:\nNombre, Edad, Género('H' o 'M')\n");
+            persona2.Nombre = Console.ReadLine();
+            persona2.Edad = Int16.Parse(Console.ReadLine());
+            persona2.Genero = Convert.ToChar(Console.ReadLine());
+            persona2.generaCedula();
+
+            //Datos para la persona 3
+            persona3.generaCedula();
+            // Impresión de datos de la persona 1
+            Console.WriteLine("Datos de la persona #1: ");
+            Console.WriteLine("El resultado del cálculo del IMC es igual a: {0}", persona1.calcularMC() + "\nDonde '-1' significa que está por debajo de su peso ideal, " +
+               "'0' significa que está en su peso ideal y '1' significa que está sobre peso");
+            String m1 = (persona1.esMayorDeEdad().Equals(true)) ? "mayor de edad" : "menor de edad";
+            Console.WriteLine("La persona 1 es {0}", m1);
+            Console.WriteLine(persona1.ToString().ToString());
+
+            // Impresión de datos de la persona 2
+            Console.WriteLine("Datos de la persona #2: ");
+            Console.WriteLine("El resultado del cálculo del IMC es igual a: {0}", persona2.calcularMC() + "\nDonde '-1' significa que está por debajo de su peso ideal, " +
+               "'0' significa que está en su peso ideal y '1' significa que está sobre peso");
+            String m2 = (persona2.esMayorDeEdad().Equals(true)) ? "mayor de edad" : "menor de edad";
+            Console.WriteLine("La persona 2 es {0}", m2);
+            Console.WriteLine(persona2.ToString().ToString());
+
+            // Impresión de datos de la persona 3
+            Console.WriteLine("Datos de la persona #3: ");
+            Console.WriteLine("El resultado del cálculo del IMC es igual a: {0}", persona2.calcularMC() + "\nDonde '-1' significa que está por debajo de su peso ideal, " +
+               "'0' significa que está en su peso ideal y '1' significa que está sobre peso");
+            String m3 = (persona3.esMayorDeEdad().Equals(true)) ? "mayor de edad" : "menor de edad";
+            Console.WriteLine("La persona 2 es {0}", m3);
+            Console.WriteLine(persona3.ToString().ToString());
+        }
+
+
+        static void ejecutablePassword()
+        {
+            Password p1 = new Password();
+            Console.WriteLine("Defina la cantidad de passwords que se van a crear: "); //Tamaño Array
+            Int16 tamArrayPass = Int16.Parse(Console.ReadLine());
+            Console.WriteLine("Defina el tamaño que van a tener los passwords: ");
+            Int16 longitud = Int16.Parse(Console.ReadLine());
+
+            string[] pass = new string[tamArrayPass];
+
+
+            for (Int16 i = 0; i < tamArrayPass; i++)
+            {
+                pass[i] = p1.generarPassword(longitud);
+                Console.WriteLine("{0} {1}", pass[i], p1.esFuerte(pass[i]));
+            }
+        }
+
+
+        static void Main(string[] args)
+        {
+            char a = 'S';
+            do
+            {
+                Console.WriteLine("Cuál aplicación desea utilizar?\nEjercicio 1: Persona (Digite 'P')\nEjercicio 2: Contraseña (Digite 'C')");
+                char menu = Convert.ToChar(Console.ReadLine());
+                switch (menu)
+                {
+                    case 'P':
+                        ejecutablePersona();
+                        break;
+                    case 'C':
+                        ejecutablePassword();
+                        break;
+                    default:
+                        Console.WriteLine("Opción inválida");
+                        break;
+                }
+         
+                Console.WriteLine("Desea continuar? 'S', 'N' ");
+                a = Convert.ToChar(Console.ReadLine());
+            } while (a == 'S');
+        }
+        
+        
+
+    }
+}
